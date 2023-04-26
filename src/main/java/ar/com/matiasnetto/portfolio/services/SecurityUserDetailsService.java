@@ -3,7 +3,6 @@ package ar.com.matiasnetto.portfolio.services;
 import ar.com.matiasnetto.portfolio.models.User;
 import ar.com.matiasnetto.portfolio.repository.UserRepository;
 import ar.com.matiasnetto.portfolio.security.SecurityUser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,7 +21,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optUser = this.repository.findById(1);
+        Optional<User> optUser = this.repository.findByUsername(username);
 
         if (optUser.isPresent()) {
             return new SecurityUser(optUser.get());

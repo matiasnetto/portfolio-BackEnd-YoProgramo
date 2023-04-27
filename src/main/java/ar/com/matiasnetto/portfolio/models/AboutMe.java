@@ -18,7 +18,4 @@ public class AboutMe {
     private String background_img_header_url;
     private String profile_img_url;
     private Date date_of_birth;
-
-    //ONE TO MANY contact
-    private Integer[] social_media;
 }

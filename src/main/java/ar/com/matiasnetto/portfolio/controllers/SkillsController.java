@@ -25,11 +25,15 @@ public class SkillsController {
     Skills createNewSkill(@RequestBody SkillsInDTO newSkillDTO) {
         System.out.println(newSkillDTO);
         return this.service.createNewSkill(newSkillDTO);
-
     }
 
     @PutMapping("/{id}")
     Skills updateSkill(@RequestBody SkillsInDTO newData, @PathVariable int id) {
         return this.service.updateSkill(newData, id);
+    }
+
+    @DeleteMapping("/{id}")
+    Skills deleteSkill(@PathVariable int id) {
+        return this.service.deleteSkill(id);
     }
 }

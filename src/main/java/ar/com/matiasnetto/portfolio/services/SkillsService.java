@@ -44,4 +44,14 @@ public class SkillsService {
         return this.repository.save(mySkill);
     }
 
+    public Skills deleteSkill(int id) {
+        Optional<Skills> optSkill = this.repository.findById(id);
+
+        if (optSkill.isEmpty()) {throw new ResourceNotFoundException("Skill","id",String.valueOf(id));}
+
+        this.repository.deleteById(id);
+
+        return optSkill.get();
+    }
+
 }

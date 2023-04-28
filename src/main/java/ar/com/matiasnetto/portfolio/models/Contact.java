@@ -12,4 +12,8 @@ public class Contact {
     private String name;
     private String url;
     private String img;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Person person;
 }

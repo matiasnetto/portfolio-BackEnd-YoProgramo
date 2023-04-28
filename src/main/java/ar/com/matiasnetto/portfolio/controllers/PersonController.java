@@ -1,12 +1,10 @@
 package ar.com.matiasnetto.portfolio.controllers;
 
+import ar.com.matiasnetto.portfolio.dto.PersonInDTO;
 import ar.com.matiasnetto.portfolio.models.Person;
 import ar.com.matiasnetto.portfolio.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/persons")
@@ -18,5 +16,10 @@ public class PersonController {
     @GetMapping("/{id}")
     public Person getPersonInformation(@PathVariable int id) {
       return this.personService.getPersonById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Person updatePersonInformation(@RequestBody PersonInDTO personDTO,@PathVariable int id) {
+        return this.personService.updatePerson(personDTO, id);
     }
 }

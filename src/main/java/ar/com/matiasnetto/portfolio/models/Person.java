@@ -65,4 +65,8 @@ public class Person {
         this.profile_img_url = profile_img_url;
         this.date_of_birth = date_of_birth;
     }
+
+    public void setSocial_media(List<Contact> social_media) {
+        this.social_media = social_media;
+    }
 }

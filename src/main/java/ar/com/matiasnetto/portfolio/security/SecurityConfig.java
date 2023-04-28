@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET,"/api/contacts").permitAll()
                 .requestMatchers(HttpMethod.POST,"/api/contacts").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.PUT,"/api/contacts/*").hasAuthority(AuthorityName.ADMIN.toString())
+                .requestMatchers(HttpMethod.DELETE,"/api/contacts/*").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.POST,"/api/skills").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.PUT,"/api/skills/*").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.DELETE,"/api/skills/*").hasAuthority(AuthorityName.ADMIN.toString())

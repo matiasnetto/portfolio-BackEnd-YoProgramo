@@ -21,7 +21,8 @@ public class Person {
     private String profile_img_url;
     private Date date_of_birth;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Contact.class, orphanRemoval = true)
+//    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Contact.class, orphanRemoval = true)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Contact> social_media;
 
     public Person(

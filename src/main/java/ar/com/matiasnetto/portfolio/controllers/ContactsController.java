@@ -31,4 +31,10 @@ public class ContactsController {
         Contact newContactData =  this.service.updateContact(contactInDTO, id);
         return new ResponseEntity<>(newContactData, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Contact> deleteContact(@PathVariable int id) {
+        Contact contactDeleted = this.service.deleteContact(id);
+        return new ResponseEntity<>(contactDeleted,HttpStatus.NO_CONTENT);
+    }
 }

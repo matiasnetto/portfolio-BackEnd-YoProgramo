@@ -53,6 +53,36 @@ public class Runner implements CommandLineRunner {
         }
 
 
+        if (this.personRepository.count() == 0) {
+            Date myBirthday = new GregorianCalendar(2002, Calendar.NOVEMBER, 14).getTime();
+            Person me = new Person(
+                    "Matias Netto",
+                    "Responsable, con capacidad de escucha, comprometido con lo que hago y abierto el trabajo en equipo.\n" +
+                            "Me adapto a cualquier proyecto y reto que me propongan.",
+                    "Argentina",
+                    "matiasnetto03@gmail.com",
+                    "Frontend Developer",
+                    "",
+                    "https://matiasnetto.com.ar/images/Me1.webp",
+                    myBirthday,
+                    List.of()
+            );
+
+            this.personRepository.save(me);
+
+           List<Contact> myContacts = List.of(
+                    new Contact("Linkedin", "https://www.linkedin.com/in/matiasnetto/","https://matiasnetto.com.ar/icons/linkedin-brands.svg",me),
+                    new Contact("Github", "https://github.com/matiasnetto","https://matiasnetto.com.ar/icons/github-brands.svg", me)
+            );
+
+           this.contactsRepository.saveAll(myContacts);
+
+           me.setSocial_media(myContacts);
+
+           this.personRepository.save(me);
+
+        }
+
 //        if (this.personRepository.count() == 0) {
 //            Date myBirthday = new GregorianCalendar(2002, Calendar.NOVEMBER, 14).getTime();
 //            Person me = new Person(
@@ -67,39 +97,15 @@ public class Runner implements CommandLineRunner {
 //                    myBirthday
 //            );
 //
-//           List<Contact> myContacts = List.of(
-//                    new Contact("Linkedin", "https://www.linkedin.com/in/matiasnetto/","https://matiasnetto.com.ar/icons/linkedin-brands.svg",me),
-//                    new Contact("Github", "https://github.com/matiasnetto","https://matiasnetto.com.ar/icons/github-brands.svg", me)
+//            List<Contact> myContacts = List.of(
+//                    new Contact("Linkedin", "https://www.linkedin.com/in/matiasnetto/","https://matiasnetto.com.ar/icons/linkedin-brands.svg"),
+//                    new Contact("Github", "https://github.com/matiasnetto","https://matiasnetto.com.ar/icons/github-brands.svg")
 //            );
 //
-//           me.setSocial_media(myContacts);
+//            me.setSocial_media(myContacts);
 //
 //            this.personRepository.save(me);
 //        }
-
-        if (this.personRepository.count() == 0) {
-            Date myBirthday = new GregorianCalendar(2002, Calendar.NOVEMBER, 14).getTime();
-            Person me = new Person(
-                    "Matias Netto",
-                    "Responsable, con capacidad de escucha, comprometido con lo que hago y abierto el trabajo en equipo.\n" +
-                            "Me adapto a cualquier proyecto y reto que me propongan.",
-                    "Argentina",
-                    "matiasnetto03@gmail.com",
-                    "Frontend Developer",
-                    "",
-                    "https://matiasnetto.com.ar/images/Me1.webp",
-                    myBirthday
-            );
-
-            List<Contact> myContacts = List.of(
-                    new Contact("Linkedin", "https://www.linkedin.com/in/matiasnetto/","https://matiasnetto.com.ar/icons/linkedin-brands.svg"),
-                    new Contact("Github", "https://github.com/matiasnetto","https://matiasnetto.com.ar/icons/github-brands.svg")
-            );
-
-            me.setSocial_media(myContacts);
-
-            this.personRepository.save(me);
-        }
 
 
 //        if (this.contactsRepository.count() == 0) {

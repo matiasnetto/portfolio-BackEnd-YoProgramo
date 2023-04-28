@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST,"/api/skills").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.PUT,"/api/skills/*").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.DELETE,"/api/skills/*").hasAuthority(AuthorityName.ADMIN.toString())
+                .requestMatchers(HttpMethod.GET,"/api/persons/*").permitAll()
                 .and().csrf().disable().build();
     }
 

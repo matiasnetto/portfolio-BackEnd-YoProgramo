@@ -8,7 +8,7 @@ public class ContactInDTO {
     private String url;
     private String img;
 
-    public ContactInDTO(String name, String url, String img) {
+    public ContactInDTO(String name, String url, String img, String person_id) {
         this.name = name;
         this.url = url;
         this.img = img;

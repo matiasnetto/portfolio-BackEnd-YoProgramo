@@ -14,17 +14,21 @@ public class Runner implements CommandLineRunner {
     private final SkillsRepository skillsRepository;
     private final ContactsRepository contactsRepository;
     private final PersonRepository personRepository;
+    private final EducationRepository educationRepository;
 
     public Runner(AuthorityRepository authorityRepository,
                   UserRepository userRepository,
                   SkillsRepository skillsRepository,
                   ContactsRepository contactsRepository,
-                  PersonRepository personRepository) {
+                  PersonRepository personRepository,
+                  EducationRepository educationRepository) {
         this.authorityRepository = authorityRepository;
         this.userRepository = userRepository;
         this.skillsRepository = skillsRepository;
         this.contactsRepository = contactsRepository;
         this.personRepository = personRepository;
+        this.educationRepository = educationRepository;
+
     }
 
     @Override
@@ -81,6 +85,14 @@ public class Runner implements CommandLineRunner {
 
            this.personRepository.save(me);
 
+        }
+
+        if (this.educationRepository.count() == 0) {
+
+            this.educationRepository.saveAll(List.of(
+                    new Education("Lic. Informatica", "UNQ","https://matiasnetto.com.ar/images/instituciones/unq.jpg",new GregorianCalendar(2021,Calendar.MARCH,1).getTime(),null,1),
+                    new Education("SCRUM: Metodologias Agiles" ,"Fundacion Telefonica","https://matiasnetto.com.ar/images/instituciones/fundacion-telefonica.jpg",new GregorianCalendar(2022,Calendar.JUNE,1).getTime(),new GregorianCalendar(2022,Calendar.AUGUST,29).getTime(),2)
+            ));
         }
 
 //        if (this.personRepository.count() == 0) {

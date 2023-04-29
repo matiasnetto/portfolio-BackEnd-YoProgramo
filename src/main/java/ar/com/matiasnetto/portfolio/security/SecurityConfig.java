@@ -38,6 +38,10 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE,"/api/skills/*").hasAuthority(AuthorityName.ADMIN.toString())
                 .requestMatchers(HttpMethod.GET,"/api/persons/*").permitAll()
                 .requestMatchers(HttpMethod.PUT,"/api/persons/*").hasAuthority(AuthorityName.ADMIN.toString())
+                .requestMatchers(HttpMethod.GET,"/api/education").permitAll()
+                .requestMatchers(HttpMethod.POST,"/api/education").hasAuthority(AuthorityName.ADMIN.toString())
+                .requestMatchers(HttpMethod.PUT,"/api/education/*").hasAuthority(AuthorityName.ADMIN.toString())
+                .requestMatchers(HttpMethod.DELETE,"/api/education/*").hasAuthority(AuthorityName.ADMIN.toString())
                 .and().csrf().disable().build();
     }
 

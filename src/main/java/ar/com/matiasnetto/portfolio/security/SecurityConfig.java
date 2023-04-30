@@ -1,17 +1,17 @@
 package ar.com.matiasnetto.portfolio.security;
 
-import ar.com.matiasnetto.portfolio.services.SecurityUserDetailsService;
 import ar.com.matiasnetto.portfolio.utils.AuthorityName;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -49,17 +49,31 @@ public class SecurityConfig {
                 .and().csrf().disable().build();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-////        var admin = User.withUsername("admin").password(passwordEncoder().encode("123")).authorities("write").roles("ADMIN").build();
-////        var result = new InMemoryUserDetailsManager();
-////        result.createUser(admin);
-//        return this.secUserService.loadUserByUsername("anshe");
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+//        var admin = User.withUsername("admin").password(passwordEncoder().encode("123")).authorities("write").roles("ADMIN").build();
+        var manager = new InMemoryUserDetailsManager();
+//        manager.
+        manager.createUser(User.withUsername("admin").password("password").authorities(AuthorityName.ADMIN.toString()).build());
+        return manager;
+//        return this.secUserService;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
         return NoOpPasswordEncoder.getInstance();
+    }
+
+
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
+        return http
+                .getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder())
+                .and().build();
     }
 
 //    @Bean

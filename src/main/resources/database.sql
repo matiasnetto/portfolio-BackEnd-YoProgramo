@@ -4,3 +4,5 @@ INSERT INTO skills (technology, image_url, percent, ord) VALUES ("Javascript", "
 
 ALTER TABLE skills modify COLUMN id INT AUTOINCREMENT;
 
+DELETE FROM technology_in_project WHERE technology_id == 1;
+

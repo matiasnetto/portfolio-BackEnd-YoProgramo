@@ -1,4 +1,4 @@
-package ar.com.matiasnetto.portfolio.services;
+package ar.com.matiasnetto.portfolio.security;
 
 import ar.com.matiasnetto.portfolio.models.User;
 import ar.com.matiasnetto.portfolio.repository.UserRepository;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+//@Service
 public class SecurityUserDetailsService implements UserDetailsService {
 
     private final UserRepository repository;

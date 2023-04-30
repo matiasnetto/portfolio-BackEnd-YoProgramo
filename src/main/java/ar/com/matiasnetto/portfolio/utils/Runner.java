@@ -15,19 +15,22 @@ public class Runner implements CommandLineRunner {
     private final ContactsRepository contactsRepository;
     private final PersonRepository personRepository;
     private final EducationRepository educationRepository;
+    private final ProjectsRepository projectsRepository;
 
     public Runner(AuthorityRepository authorityRepository,
                   UserRepository userRepository,
                   SkillsRepository skillsRepository,
                   ContactsRepository contactsRepository,
                   PersonRepository personRepository,
-                  EducationRepository educationRepository) {
+                  EducationRepository educationRepository,
+                  ProjectsRepository projectsRepository) {
         this.authorityRepository = authorityRepository;
         this.userRepository = userRepository;
         this.skillsRepository = skillsRepository;
         this.contactsRepository = contactsRepository;
         this.personRepository = personRepository;
         this.educationRepository = educationRepository;
+        this.projectsRepository = projectsRepository;
 
     }
 
@@ -51,8 +54,9 @@ public class Runner implements CommandLineRunner {
         if (this.skillsRepository.count() == 0) {
             this.skillsRepository.saveAll(List.of(
                     new Skills( "Javascript","https://javascribp.com/img.jpg",80,1),
-                    new Skills( "Angular","https://angular.com/img.jpg",50,2),
-                    new Skills( "Java","https://java.com/img.jpg",50,2)
+                    new Skills( "React","https://react.com/img.jpg",90,2),
+                    new Skills( "Angular","https://angular.com/img.jpg",50,3),
+                    new Skills( "Java","https://java.com/img.jpg",50,4)
             ));
         }
 
@@ -92,6 +96,43 @@ public class Runner implements CommandLineRunner {
             this.educationRepository.saveAll(List.of(
                     new Education("Lic. Informatica", "UNQ","https://matiasnetto.com.ar/images/instituciones/unq.jpg",new GregorianCalendar(2021,Calendar.MARCH,1).getTime(),null,1),
                     new Education("SCRUM: Metodologias Agiles" ,"Fundacion Telefonica","https://matiasnetto.com.ar/images/instituciones/fundacion-telefonica.jpg",new GregorianCalendar(2022,Calendar.JUNE,1).getTime(),new GregorianCalendar(2022,Calendar.AUGUST,29).getTime(),2)
+            ));
+        }
+
+        if (this.projectsRepository.count() == 0) {
+            Skills js = this.skillsRepository.findById(1).get();
+            Skills react = this.skillsRepository.findById(2).get();
+            Skills angular = this.skillsRepository.findById(3).get();
+            Skills java = this.skillsRepository.findById(4).get();
+
+            Set<Skills> mySet1 = new HashSet<Skills>();
+            Set<Skills> mySet2 = new HashSet<Skills>();
+            mySet1.add(js);
+            mySet1.add(react);
+            mySet2.add(js);
+            mySet2.add(angular);
+            mySet2.add(java);
+            this.projectsRepository.saveAll(List.of(
+                    new Projects(
+                            "Urban Cothes",
+                            "https://matiasnetto.com.ar/_next/image?url=%2Fimages%2Fprojects%2FUrbanClothes%2Furban-clothes-img-1.jpg&w=1920&q=75",
+                            new GregorianCalendar(2022,Calendar.JUNE,1).getTime(),
+                            "E-Commerce",
+                            "https://catalogue-with-cart.web.app/",
+                            "https://github.com/matiasnetto/urban-clothes-commerce",
+                            1,
+                            mySet1
+                    ),
+                    new Projects(
+                            "Portfolio YoProgramo",
+                            "https://Yoprogramo.com.ar",
+                            new GregorianCalendar(2023,Calendar.MARCH,1).getTime(),
+                            "Portfolio",
+                            null,
+                            "https://github.com/matiasnetto/yoprogramoportfolio",
+                            2,
+                            mySet2
+                    )
             ));
         }
 

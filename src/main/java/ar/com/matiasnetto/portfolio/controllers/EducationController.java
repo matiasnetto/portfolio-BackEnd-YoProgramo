@@ -28,11 +28,13 @@ public class EducationController {
 
         return new ResponseEntity<>(myEducation, HttpStatus.CREATED);
     }
+    
    @PutMapping("/{id}")
     public ResponseEntity<Education> updateEducation(@RequestBody EducationInDTO educationInDTO,@PathVariable int id) {
         Education myEducation = this.service.updateEducation(educationInDTO,id);
         return new ResponseEntity<>(myEducation, HttpStatus.OK);
     }
+
    @DeleteMapping("/{id}")
     public ResponseEntity<Education> deleteEducation(@PathVariable int id) {
         Education myEducation = this.service.deleteEducation(id);

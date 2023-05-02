@@ -16,6 +16,7 @@ public class Runner implements CommandLineRunner {
     private final PersonRepository personRepository;
     private final EducationRepository educationRepository;
     private final ProjectsRepository projectsRepository;
+    private final ExperienceRepository experienceRepository;
 
     public Runner(AuthorityRepository authorityRepository,
                   UserRepository userRepository,
@@ -23,7 +24,8 @@ public class Runner implements CommandLineRunner {
                   ContactsRepository contactsRepository,
                   PersonRepository personRepository,
                   EducationRepository educationRepository,
-                  ProjectsRepository projectsRepository) {
+                  ProjectsRepository projectsRepository,
+                  ExperienceRepository experienceRepository) {
         this.authorityRepository = authorityRepository;
         this.userRepository = userRepository;
         this.skillsRepository = skillsRepository;
@@ -31,6 +33,7 @@ public class Runner implements CommandLineRunner {
         this.personRepository = personRepository;
         this.educationRepository = educationRepository;
         this.projectsRepository = projectsRepository;
+        this.experienceRepository = experienceRepository;
 
     }
 
@@ -133,6 +136,37 @@ public class Runner implements CommandLineRunner {
                             2,
                             mySet2
                     )
+            ));
+        }
+
+        if (this.experienceRepository.count() == 0) {
+            Date myDate = new GregorianCalendar(2022,Calendar.MARCH,12).getTime();
+            this.experienceRepository.saveAll(List.of(
+                    new Experience(
+                            "Empresa1",
+                            "Junior Frontend Developer",
+                            "Some quick example text to build on the card title and make up the bulk of the card's content. ",
+                            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F10%2F119930_google_512x512.png&f=1&nofb=1&ipt=51cb0b840d5df7d05ee3b31b3a3a629ef5293e90a7c4e2bd753eda624a9167be&ipo=images",
+                            myDate,
+                            null,
+                            1),
+                    new Experience(
+                            "Empresa2",
+                            "Junior Frontend Developer",
+                            "Some quick example text to build on the card title and make up the bulk of the card's content. ",
+                            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F10%2F119930_google_512x512.png&f=1&nofb=1&ipt=51cb0b840d5df7d05ee3b31b3a3a629ef5293e90a7c4e2bd753eda624a9167be&ipo=images",
+                            myDate,
+                            null,
+                            2),
+                    new Experience(
+                            "Empresa3",
+                            "Junior Frontend Developer Anashex",
+                            "Some quick example text to build on the card title and make up the bulk of the card's content. ",
+                            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2016%2F07%2F10%2F119930_google_512x512.png&f=1&nofb=1&ipt=51cb0b840d5df7d05ee3b31b3a3a629ef5293e90a7c4e2bd753eda624a9167be&ipo=images",
+                            myDate,
+                            null,
+                            1)
+
             ));
         }
 

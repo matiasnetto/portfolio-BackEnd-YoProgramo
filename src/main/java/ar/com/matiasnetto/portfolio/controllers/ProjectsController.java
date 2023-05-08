@@ -13,16 +13,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/projects")
 public class ProjectsController {
-   @Autowired
+    @Autowired
     ProjectsService service;
+
+    @CrossOrigin
     @GetMapping
     public List<Projects> getAllProjects() {
-       return this.service.getAllProjects();
+        return this.service.getAllProjects();
     }
 
     @PostMapping
     public Projects createNewProject(@RequestBody ProjectsInDTO projectsInDTO) {
-        return  this.service.createNewProject(projectsInDTO);
+        return this.service.createNewProject(projectsInDTO);
     }
 
     @PutMapping("/{id}")

@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/persons")
 public class PersonController {
 
-    @Autowired
-    PersonService personService;
+  @Autowired
+  PersonService personService;
 
-    @GetMapping("/{id}")
-    public Person getPersonInformation(@PathVariable int id) {
-      return this.personService.getPersonById(id);
-    }
+  @CrossOrigin
+  @GetMapping("/{id}")
+  public Person getPersonInformation(@PathVariable int id) {
+    return this.personService.getPersonById(id);
+  }
 
-    @PutMapping("/{id}")
-    public Person updatePersonInformation(@RequestBody PersonInDTO personDTO,@PathVariable int id) {
-        return this.personService.updatePerson(personDTO, id);
-    }
+  @PutMapping("/{id}")
+  public Person updatePersonInformation(@RequestBody PersonInDTO personDTO, @PathVariable int id) {
+    return this.personService.updatePerson(personDTO, id);
+  }
 }

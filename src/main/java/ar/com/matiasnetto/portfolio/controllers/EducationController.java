@@ -17,6 +17,7 @@ public class EducationController {
     @Autowired
     EducationService service;
 
+    @CrossOrigin
     @GetMapping
     public List<Education> getAllEducation() {
         return this.service.getAllEducation();
@@ -28,16 +29,16 @@ public class EducationController {
 
         return new ResponseEntity<>(myEducation, HttpStatus.CREATED);
     }
-    
-   @PutMapping("/{id}")
-    public ResponseEntity<Education> updateEducation(@RequestBody EducationInDTO educationInDTO,@PathVariable int id) {
-        Education myEducation = this.service.updateEducation(educationInDTO,id);
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Education> updateEducation(@RequestBody EducationInDTO educationInDTO, @PathVariable int id) {
+        Education myEducation = this.service.updateEducation(educationInDTO, id);
         return new ResponseEntity<>(myEducation, HttpStatus.OK);
     }
 
-   @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Education> deleteEducation(@PathVariable int id) {
         Education myEducation = this.service.deleteEducation(id);
-        return new ResponseEntity<>(myEducation,HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(myEducation, HttpStatus.NO_CONTENT);
     }
 }

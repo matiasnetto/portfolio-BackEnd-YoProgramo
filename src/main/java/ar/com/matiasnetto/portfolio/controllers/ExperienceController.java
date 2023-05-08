@@ -14,25 +14,27 @@ import java.util.List;
 @RequestMapping("/api/experience")
 public class ExperienceController {
    @Autowired
-    ExperienceService service;
+   ExperienceService service;
+
+   @CrossOrigin
    @GetMapping
-    public List<Experience> getAllExperience() {
-        return  this.service.getAllExperience();
-    }
+   public List<Experience> getAllExperience() {
+      return this.service.getAllExperience();
+   }
 
-    @PostMapping
-    public Experience createNewExperience(@RequestBody ExperienceInDTO experienceInDTO) {
-       return  this.service.createNewExperience(experienceInDTO);
-    }
+   @PostMapping
+   public Experience createNewExperience(@RequestBody ExperienceInDTO experienceInDTO) {
+      return this.service.createNewExperience(experienceInDTO);
+   }
 
-    @PutMapping("/{id}")
-    public Experience updateExperience(@RequestBody ExperienceInDTO experienceInDTO, @PathVariable int id) {
-       return this.service.updateExperience(experienceInDTO, id);
-    }
+   @PutMapping("/{id}")
+   public Experience updateExperience(@RequestBody ExperienceInDTO experienceInDTO, @PathVariable int id) {
+      return this.service.updateExperience(experienceInDTO, id);
+   }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Experience> deleteExperience(@PathVariable int id) {
-       Experience myExperience = this.service.deleteExperience(id);
-       return new ResponseEntity<Experience>(myExperience, HttpStatus.NO_CONTENT);
-    }
+   @DeleteMapping("/{id}")
+   public ResponseEntity<Experience> deleteExperience(@PathVariable int id) {
+      Experience myExperience = this.service.deleteExperience(id);
+      return new ResponseEntity<Experience>(myExperience, HttpStatus.NO_CONTENT);
+   }
 }

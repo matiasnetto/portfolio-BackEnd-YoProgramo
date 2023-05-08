@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController @RequestMapping("/api/skills")
+@RestController
+@RequestMapping("/api/skills")
 public class SkillsController {
 
     @Autowired
     SkillsService service;
 
+    @CrossOrigin
     @GetMapping
     ResponseEntity<List<Skills>> getSkills() {
         List<Skills> mySkills = this.service.getAllSkills();
@@ -31,7 +33,7 @@ public class SkillsController {
     @PutMapping("/{id}")
     ResponseEntity<Skills> updateSkill(@RequestBody SkillsInDTO newData, @PathVariable int id) {
         Skills updatedSkill = this.service.updateSkill(newData, id);
-        return new ResponseEntity<>(updatedSkill,HttpStatus.OK);
+        return new ResponseEntity<>(updatedSkill, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

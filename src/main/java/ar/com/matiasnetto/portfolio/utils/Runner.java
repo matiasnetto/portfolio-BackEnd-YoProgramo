@@ -56,10 +56,10 @@ public class Runner implements CommandLineRunner {
 
         if (this.skillsRepository.count() == 0) {
             this.skillsRepository.saveAll(List.of(
-                    new Skills( "Javascript","https://javascribp.com/img.jpg",80,1),
-                    new Skills( "React","https://react.com/img.jpg",90,2),
-                    new Skills( "Angular","https://angular.com/img.jpg",50,3),
-                    new Skills( "Java","https://java.com/img.jpg",50,4)
+                    new Skills( "Javascript","/assets/images/javascript.webp",80,1),
+                    new Skills( "React","/assets/images/react.webp",90,2),
+                    new Skills( "Next.js","/assets/images/next.webp",50,3),
+                    new Skills( "Typescript","/assets/images/typescript.webp",50,4)
             ));
         }
 
@@ -68,13 +68,18 @@ public class Runner implements CommandLineRunner {
             Date myBirthday = new GregorianCalendar(2002, Calendar.NOVEMBER, 14).getTime();
             Person me = new Person(
                     "Matias Netto",
-                    "Responsable, con capacidad de escucha, comprometido con lo que hago y abierto el trabajo en equipo.\n" +
-                            "Me adapto a cualquier proyecto y reto que me propongan.",
+                    "Hola, mi nombre es Matias, soy desarrollador web Frontend especializado en React.js ⚛\uFE0F, aunque con conocimientos de Backend con Node, Express, MongoDB, PostgreSQL y mas!\n" +
+                            "\n" +
+                            "Soy estudiante de licenciatura informatica en la Universidad nacional de Quilmes (UNQ) \uD83E\uDD13\n" +
+                            "\n" +
+                            "Apasionado por las nuevas tecnologias, con facilidad para trabajar en equipo y abierto a aprender del feedback de ellos \uD83D\uDC68\u200D\uD83D\uDCBB\n" +
+                            "\n" +
+                            "Ansioso por abordar innovadores proyectos con nuevos problemas que resolver \uD83D\uDE01",
                     "Argentina",
                     "matiasnetto03@gmail.com",
                     "Frontend Developer",
-                    "",
-                    "https://matiasnetto.com.ar/images/Me1.webp",
+                    "/assets/bg.jpeg",
+                    "/assets/matias-netto-small.jpg",
                     myBirthday,
                     List.of()
             );
@@ -128,7 +133,7 @@ public class Runner implements CommandLineRunner {
                     ),
                     new Projects(
                             "Portfolio YoProgramo",
-                            "https://Yoprogramo.com.ar",
+                            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.infozona.com.ar%2Fwp-content%2Fuploads%2F2021%2F08%2FArgentina-programa-1024x529.jpeg&f=1&nofb=1&ipt=6e05d27bae7679eaf956de9a98adab8e110fbe692bacceb3672498d5925e21b4&ipo=images",
                             new GregorianCalendar(2023,Calendar.MARCH,1).getTime(),
                             "Portfolio",
                             null,

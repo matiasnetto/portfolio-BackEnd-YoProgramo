@@ -13,6 +13,7 @@ public class Person {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(length=1024)
     private String description;
     private String nationality;
     private String mail;

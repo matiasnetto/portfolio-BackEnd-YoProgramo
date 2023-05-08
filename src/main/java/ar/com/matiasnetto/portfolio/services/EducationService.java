@@ -23,6 +23,13 @@ public class EducationService {
         return this.repository.findAll();
     }
 
+    public Education getEducationById(int id) {
+        Optional<Education> optEducation = this.repository.findById(id);
+
+        if (optEducation.isEmpty()) {throw new ResourceNotFoundException("Education", "id", String.valueOf(id));}
+
+        return  optEducation.get();
+    }
     public Education createNewEducation(EducationInDTO educationDTO) {
         return this.repository.save(this.mapper.map(educationDTO));
     }

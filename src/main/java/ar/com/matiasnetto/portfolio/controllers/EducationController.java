@@ -23,6 +23,11 @@ public class EducationController {
         return this.service.getAllEducation();
     }
 
+    @GetMapping("/{id}")
+    public Education getEducationById(@PathVariable int id) {
+        return this.service.getEducationById(id);
+    }
+
     @PostMapping
     public ResponseEntity<Education> createNewEducation(@RequestBody EducationInDTO educationDTO) {
         Education myEducation = this.service.createNewEducation(educationDTO);

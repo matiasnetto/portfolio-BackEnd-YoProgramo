@@ -23,6 +23,11 @@ public class ContactsController {
         return this.service.findAllContacts();
     }
 
+    @GetMapping("/{id}")
+    Contact getContactById(@PathVariable int id) {
+        return this.service.findContactById(id);
+    }
+
     @PostMapping
     Contact createNewContact(@RequestBody ContactInDTO contactInDTO) {
         return this.service.createNewContact(contactInDTO);

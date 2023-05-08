@@ -26,6 +26,14 @@ public class ContactsService {
         return this.contactsRepository.findAll();
     }
 
+    public Contact findContactById(int id) {
+        Optional<Contact> optContact = this.contactsRepository.findById(id);
+
+        if (optContact.isEmpty()) {throw new ResourceNotFoundException("Contact", "id", String.valueOf(id));}
+
+        return optContact.get();
+    }
+
     public Contact createNewContact(ContactInDTO contactDTO) {
         Optional<Person> optPerson = this.personRepository.findById(contactDTO.getPerson_id());
 

@@ -22,10 +22,16 @@ public class ProjectsController {
         return this.service.getAllProjects();
     }
 
+    @GetMapping("/{id}")
+    public Projects getProjectById(@PathVariable int id) {
+        return this.service.getProjectById(id);
+    }
+
     @PostMapping
     public Projects createNewProject(@RequestBody ProjectsInDTO projectsInDTO) {
         return this.service.createNewProject(projectsInDTO);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Projects> updateProject(@RequestBody ProjectsInDTO projectsInDTO, @PathVariable int id) {

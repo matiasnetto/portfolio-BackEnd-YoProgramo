@@ -75,6 +75,7 @@ public class SecurityConfig {
          .requestMatchers(HttpMethod.PUT,"/api/education/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.DELETE,"/api/education/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.GET,"/api/projects").permitAll()
+         .requestMatchers(HttpMethod.GET,"/api/projects/*").permitAll()
          .requestMatchers(HttpMethod.POST,"/api/projects").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.PUT,"/api/projects/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.DELETE,"/api/projects/*").hasAuthority(AuthorityName.ADMIN.toString())

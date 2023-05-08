@@ -21,6 +21,14 @@ public class ProjectsService {
        return  this.repository.findAll();
     }
 
+    public Projects getProjectById(int id) {
+        Optional<Projects> optProject = this.repository.findById(id);
+
+        if (optProject.isEmpty()) {throw new ResourceNotFoundException("Project", "id", String.valueOf(id));}
+
+        return optProject.get();
+    }
+
     public Projects createNewProject(ProjectsInDTO projectsInDTO) {
         Projects myProject = this.mapper.map(projectsInDTO);
         return this.repository.save(myProject);

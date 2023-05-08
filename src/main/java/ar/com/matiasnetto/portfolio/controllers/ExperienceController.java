@@ -22,6 +22,11 @@ public class ExperienceController {
       return this.service.getAllExperience();
    }
 
+   @GetMapping("/{id}")
+   public Experience getExperienceById(@PathVariable int id) {
+      return this.service.getExperienceById(id);
+   }
+
    @PostMapping
    public Experience createNewExperience(@RequestBody ExperienceInDTO experienceInDTO) {
       return this.service.createNewExperience(experienceInDTO);

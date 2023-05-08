@@ -23,6 +23,15 @@ public class ExperienceService {
         return  this.repository.findAll();
     }
 
+    public Experience getExperienceById(int id) {
+        Optional<Experience> optExperience = this.repository.findById(id);
+
+        if (optExperience.isEmpty()) {throw new ResourceNotFoundException("Experience", "id", String.valueOf(id));}
+
+        return optExperience.get();
+
+    }
+
     public Experience createNewExperience(ExperienceInDTO experienceInDTO) {
         Experience myExperience = this.mapper.map(experienceInDTO);
         return this.repository.save(myExperience);

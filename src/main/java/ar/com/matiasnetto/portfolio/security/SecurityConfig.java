@@ -79,6 +79,7 @@ public class SecurityConfig {
          .requestMatchers(HttpMethod.PUT,"/api/projects/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.DELETE,"/api/projects/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.GET,"/api/experience").permitAll()
+         .requestMatchers(HttpMethod.GET,"/api/experience/*").permitAll()
          .requestMatchers(HttpMethod.POST,"/api/experience").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.PUT,"/api/experience/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.DELETE,"/api/experience/*").hasAuthority(AuthorityName.ADMIN.toString())

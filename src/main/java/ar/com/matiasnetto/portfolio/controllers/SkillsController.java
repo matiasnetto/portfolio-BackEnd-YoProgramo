@@ -24,6 +24,11 @@ public class SkillsController {
         return new ResponseEntity<>(mySkills, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    Skills getSkillById(@PathVariable int id) {
+        return this.service.getSkillById(id);
+    }
+
     @PostMapping
     ResponseEntity<Skills> createNewSkill(@RequestBody SkillsInDTO newSkillDTO) {
         Skills newSkill = this.service.createNewSkill(newSkillDTO);

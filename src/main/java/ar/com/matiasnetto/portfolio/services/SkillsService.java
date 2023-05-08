@@ -25,6 +25,15 @@ public class SkillsService {
         return this.skillsRepository.findAll();
     }
 
+    public Skills getSkillById(int id) {
+        Optional<Skills> optSkill = this.skillsRepository.findById(id);
+
+        if (optSkill.isEmpty()) {throw new ResourceNotFoundException("Skill", "id", String.valueOf(id));}
+
+        return optSkill.get();
+    }
+
+
     public Skills createNewSkill(SkillsInDTO skillDTO) {
         return  this.skillsRepository.save(this.mapper.map(skillDTO));
     }

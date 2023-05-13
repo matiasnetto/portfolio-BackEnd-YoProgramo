@@ -5,13 +5,13 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,13 +29,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         } catch (IOException e) {
         }
 
+
        UsernamePasswordAuthenticationToken usernamePAT = new UsernamePasswordAuthenticationToken(
                authCredentials.getUsername(),
-               authCredentials.getPassword(),
-               Collections.emptyList())
-               ;
+               authCredentials.getPassword()
+       );
 
-
+        setDetails(request,usernamePAT);
         return getAuthenticationManager().authenticate(usernamePAT);
    }
 
@@ -47,11 +47,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
        SecurityUser user = (SecurityUser) authResult.getPrincipal();
 
-        System.out.println("AUthorities: ");
-       user.getAuthorities().forEach(au -> System.out.println(au.getAuthority()));
-
-       String bearerToken = "Bearer " +TokenUtils.createToken(user.getUsername());
-       response.addHeader("Authorization", bearerToken);
+       String bearerToken = "Bearer " + TokenUtils.createToken(user.getUsername());
+       response.addHeader(HttpHeaders.AUTHORIZATION, bearerToken);
 
         Map<String, String> res = new HashMap<>();
         res.put("token",bearerToken);

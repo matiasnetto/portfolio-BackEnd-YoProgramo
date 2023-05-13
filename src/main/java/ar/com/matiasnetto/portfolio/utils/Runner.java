@@ -3,6 +3,7 @@ package ar.com.matiasnetto.portfolio.utils;
 import ar.com.matiasnetto.portfolio.models.*;
 import ar.com.matiasnetto.portfolio.repository.*;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -17,6 +18,7 @@ public class Runner implements CommandLineRunner {
     private final EducationRepository educationRepository;
     private final ProjectsRepository projectsRepository;
     private final ExperienceRepository experienceRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public Runner(AuthorityRepository authorityRepository,
                   UserRepository userRepository,
@@ -25,7 +27,8 @@ public class Runner implements CommandLineRunner {
                   PersonRepository personRepository,
                   EducationRepository educationRepository,
                   ProjectsRepository projectsRepository,
-                  ExperienceRepository experienceRepository) {
+                  ExperienceRepository experienceRepository,
+                  PasswordEncoder passwordEncoder) {
         this.authorityRepository = authorityRepository;
         this.userRepository = userRepository;
         this.skillsRepository = skillsRepository;
@@ -34,7 +37,7 @@ public class Runner implements CommandLineRunner {
         this.educationRepository = educationRepository;
         this.projectsRepository = projectsRepository;
         this.experienceRepository = experienceRepository;
-
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -49,8 +52,8 @@ public class Runner implements CommandLineRunner {
 
         if (this.userRepository.count() == 0) {
             this.userRepository.saveAll(List.of(
-                    new User("admin@admin.com","admin","password",List.of(this.authorityRepository.findByName(AuthorityName.ADMIN).get())),
-                    new User("user@user.com","user","password",List.of(this.authorityRepository.findByName(AuthorityName.USER).get())))
+                    new User("admin@admin.com","admin",this.passwordEncoder.encode("password"),List.of(this.authorityRepository.findByName(AuthorityName.ADMIN).get())),
+                    new User("user@user.com","user",this.passwordEncoder.encode("password"),List.of(this.authorityRepository.findByName(AuthorityName.USER).get())))
             );
         }
 

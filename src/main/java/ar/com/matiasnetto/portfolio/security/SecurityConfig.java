@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -29,22 +29,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationManager authenticationManager)
             throws Exception {
+
         JWTAuthenticationFilter jwtAuthenticationFilter = new JWTAuthenticationFilter();
 
         jwtAuthenticationFilter.setAuthenticationManager(authenticationManager);
         jwtAuthenticationFilter.setFilterProcessesUrl("/api/login");
-
-        // return http
-        // .csrf().disable()
-        // .httpBasic()
-        // .and()
-        // .sessionManagement()
-        // .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        // .and()
-        // .addFilter(jwtAuthenticationFilter)
-        // .addFilterBefore(jwtAuthorizationFilter,
-        // UsernamePasswordAuthenticationFilter.class)
-        // .build();
 
 //        return http.cors().and()
 //                .csrf().disable()
@@ -52,6 +41,9 @@ public class SecurityConfig {
 //                .and().authorizeHttpRequests()
 //                .requestMatchers("/api/*").permitAll()
 //                .requestMatchers("/api/*/*").permitAll()
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .and().build();
 
          return http
@@ -96,21 +88,11 @@ public class SecurityConfig {
          .build();
     }
 
-    // @Bean
-    // public UserDetailsService userDetailsService() {
-    //// var admin =
-    // User.withUsername("admin").password(passwordEncoder().encode("123")).authorities("write").roles("ADMIN").build();
-    // var manager = new InMemoryUserDetailsManager();
-    //// manager.
-    // manager.createUser(User.withUsername("admin").password("password").authorities(AuthorityName.ADMIN.toString()).build());
-    // return manager;
-    //// return this.secUserService;
-    // }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // return new BCryptPasswordEncoder();
-        return NoOpPasswordEncoder.getInstance();
+         return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
@@ -123,9 +105,4 @@ public class SecurityConfig {
                 .and().build();
     }
 
-    // @Bean
-    // public WebSecurityCustomizer webSecurityCustomizer() {
-    // return (web) -> web.ignoring().requestMatchers("/*").requestMatchers().;
-    // return (web) -> web.
-    // }
 }

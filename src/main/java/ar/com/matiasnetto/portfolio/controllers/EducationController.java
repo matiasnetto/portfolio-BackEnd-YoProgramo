@@ -17,7 +17,6 @@ public class EducationController {
     @Autowired
     EducationService service;
 
-    @CrossOrigin
     @GetMapping
     public List<Education> getAllEducation() {
         return this.service.getAllEducation();

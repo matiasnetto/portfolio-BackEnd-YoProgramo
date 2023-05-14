@@ -16,7 +16,6 @@ public class ProjectsController {
     @Autowired
     ProjectsService service;
 
-    @CrossOrigin
     @GetMapping
     public List<Projects> getAllProjects() {
         return this.service.getAllProjects();

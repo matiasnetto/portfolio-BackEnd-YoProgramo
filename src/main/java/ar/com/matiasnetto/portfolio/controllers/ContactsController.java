@@ -17,7 +17,6 @@ public class ContactsController {
     @Autowired
     ContactsService service;
 
-    @CrossOrigin
     @GetMapping
     List<Contact> getAllContacts() {
         return this.service.findAllContacts();

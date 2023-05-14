@@ -13,7 +13,6 @@ public class PersonController {
   @Autowired
   PersonService personService;
 
-  @CrossOrigin
   @GetMapping("/{id}")
   public Person getPersonInformation(@PathVariable int id) {
     return this.personService.getPersonById(id);

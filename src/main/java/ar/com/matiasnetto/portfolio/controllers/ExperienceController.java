@@ -16,7 +16,6 @@ public class ExperienceController {
    @Autowired
    ExperienceService service;
 
-   @CrossOrigin
    @GetMapping
    public List<Experience> getAllExperience() {
       return this.service.getAllExperience();

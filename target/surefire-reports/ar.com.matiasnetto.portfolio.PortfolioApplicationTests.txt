@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: ar.com.matiasnetto.portfolio.PortfolioApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.259 s - in ar.com.matiasnetto.portfolio.PortfolioApplicationTests
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 13.23 s <<< FAILURE! - in ar.com.matiasnetto.portfolio.PortfolioApplicationTests
+contextLoads  Time elapsed: 0.015 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@3e7fc07e testClass = ar.com.matiasnetto.portfolio.PortfolioApplicationTests, locations = [], classes = [ar.com.matiasnetto.portfolio.PortfolioApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@57af006c, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@29d89d5d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@3d5c822d, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@9da1, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@28f2a10f, org.springframework.boot.test.context.SpringBootTestAnnotation@8915fe11], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
+Caused by: org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction
+Caused by: org.hibernate.exception.SQLGrammarException: Unable to acquire JDBC Connection
+Caused by: java.sql.SQLSyntaxErrorException: User 'um0ryqkywf4bcctt' has exceeded the 'max_user_connections' resource (current value: 5)
+

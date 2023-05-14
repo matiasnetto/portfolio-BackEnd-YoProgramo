@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>rebuild</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+            <properties>
+                <Env.MYSQL_ADDON_HOST>bhhada48gqg3njvxi0ce-mysql.services.clever-cloud.com</Env.MYSQL_ADDON_HOST>
+                <Env.MYSQL_ADDON_DB>bhhada48gqg3njvxi0ce</Env.MYSQL_ADDON_DB>
+                <Env.MYSQL_ADDON_USER>um0ryqkywf4bcctt</Env.MYSQL_ADDON_USER>
+                <Env.MYSQL_ADDON_PORT>3306</Env.MYSQL_ADDON_PORT>
+                <Env.MYSQL_ADDON_PASSWORD>oYlmK0JGEu5IZaVjvkJT</Env.MYSQL_ADDON_PASSWORD>
+                <Env.MYSQL_ADDON_URI>mysql://um0ryqkywf4bcctt:oYlmK0JGEu5IZaVjvkJT@bhhada48gqg3njvxi0ce-mysql.services.clever-cloud.com:3306/bhhada48gqg3njvxi0ce</Env.MYSQL_ADDON_URI>
+            </properties>
+        </action>
+    </actions>

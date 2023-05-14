@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+#GIT
+.env.prod
+.env.dev

@@ -1,18 +1,13 @@
 package ar.com.matiasnetto.portfolio.security;
-
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 
 public class TokenUtils {
+
 
     public static final String ACCESS_TOKEN_SECRET = "qwertyuiopqwertyuiopqwertyuiopasdf";
     public static final Long ACCESS_TOKEN_VALIDITY_SECONDS = 2_592_000L;

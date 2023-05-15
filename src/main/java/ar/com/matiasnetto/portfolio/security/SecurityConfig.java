@@ -48,8 +48,7 @@ public class SecurityConfig {
 
          return http.cors().and()
          .csrf().disable()
-         .httpBasic()
-         .and().authorizeHttpRequests()
+         .authorizeHttpRequests()
          .requestMatchers(HttpMethod.GET,"/api/skills").permitAll()
          .requestMatchers(HttpMethod.GET,"/api/skills/*").permitAll()
          .requestMatchers(HttpMethod.POST,"/api/skills").hasAuthority(AuthorityName.ADMIN.toString())

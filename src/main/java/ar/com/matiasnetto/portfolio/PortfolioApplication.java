@@ -18,7 +18,8 @@ public class PortfolioApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registery) {
-                registery.addMapping("/**").allowedOrigins("https://portfolio-ap-matias-netto.web.app").allowedMethods("*").allowedHeaders("*");
+                registery.addMapping("/**").allowedOrigins("https://portfolio-ap-matias-netto.web.app","https://portfolio-ap-matias-netto.web.app/").allowedMethods("*").allowedHeaders("*");
+//registery.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("*").allowedHeaders("*");
             }
         };
     }

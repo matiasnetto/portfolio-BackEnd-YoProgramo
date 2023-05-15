@@ -4,7 +4,6 @@ ar/com/matiasnetto/portfolio/repository/ProjectsRepository.class
 ar/com/matiasnetto/portfolio/security/SecurityAuthority.class
 ar/com/matiasnetto/portfolio/mappers/ProjectsInToProjects.class
 ar/com/matiasnetto/portfolio/services/ExperienceService.class
-ar/com/matiasnetto/portfolio/WebConfig.class
 ar/com/matiasnetto/portfolio/controllers/ExperienceController.class
 ar/com/matiasnetto/portfolio/services/ContactsService.class
 ar/com/matiasnetto/portfolio/repository/UserRepository.class
@@ -36,6 +35,7 @@ ar/com/matiasnetto/portfolio/controllers/EducationController.class
 ar/com/matiasnetto/portfolio/utils/AuthorityName.class
 ar/com/matiasnetto/portfolio/utils/Runner.class
 ar/com/matiasnetto/portfolio/exceptions/ResourceNotFoundException.class
+ar/com/matiasnetto/portfolio/PortfolioApplication$1.class
 ar/com/matiasnetto/portfolio/services/EducationService.class
 ar/com/matiasnetto/portfolio/security/SecurityConfig.class
 ar/com/matiasnetto/portfolio/security/SecurityUserDetailsService.class

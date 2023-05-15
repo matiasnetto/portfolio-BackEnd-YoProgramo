@@ -12,7 +12,6 @@
 /home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/PortfolioApplication.java
 /home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/security/AuthCredentialsIn.java
 /home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/models/Education.java
-/home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/WebConfig.java
 /home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/exceptions/ApiExceptionHandler.java
 /home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/security/SecurityAuthority.java
 /home/matias/Documentos/YoProgramo/ProyectoFinal/backend/src/main/java/ar/com/matiasnetto/portfolio/repository/ProjectsRepository.java

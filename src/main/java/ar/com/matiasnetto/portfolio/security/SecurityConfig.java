@@ -77,6 +77,7 @@ public class SecurityConfig {
          .requestMatchers(HttpMethod.PUT,"/api/experience/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.DELETE,"/api/experience/*").hasAuthority(AuthorityName.ADMIN.toString())
          .requestMatchers(HttpMethod.POST,"/api/login").permitAll()
+         .requestMatchers(HttpMethod.GET,"/*").permitAll()
          .and()
          .sessionManagement()
          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

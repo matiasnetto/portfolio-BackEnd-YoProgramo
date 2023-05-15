@@ -17,6 +17,7 @@ public class SkillsController {
     @Autowired
     SkillsService service;
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     ResponseEntity<List<Skills>> getSkills() {
         List<Skills> mySkills = this.service.getAllSkills();
